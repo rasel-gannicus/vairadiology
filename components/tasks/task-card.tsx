@@ -76,36 +76,31 @@ export function TaskCard({ task, isDragging }: TaskCardProps) {
         isDraggingFromKit && "opacity-50",
       )}
     >
-      <div {...listeners} {...attributes} className="cursor-grab active:cursor-grabbing"></div>
-        <CardHeader className="pb-2">
+      <CardHeader className="pb-2">
         <div className="flex items-start justify-between">
-          <h4 className="font-medium text-sm line-clamp-2">{task.title}</h4>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
-                <MoreHorizontal className="h-3 w-3" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" onCloseAutoFocus={(e) => e.preventDefault()}>
-              <DropdownMenuItem 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsEditDialogOpen(true);
-                }}
-              >
-                Edit
-              </DropdownMenuItem>
-              <DropdownMenuItem 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  deleteTask(task.id);
-                }} 
-                className="text-destructive"
-              >
-                Delete
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <div {...listeners} {...attributes} className="cursor-grab active:cursor-grabbing flex-1">
+            <h4 className="font-medium text-sm line-clamp-2">{task.title}</h4>
+          </div>
+          <div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
+                  <MoreHorizontal className="h-3 w-3" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => setIsEditDialogOpen(true)}>
+                  Edit
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  onClick={() => deleteTask(task.id)} 
+                  className="text-destructive"
+                >
+                  Delete
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </div>
       </CardHeader>
 
