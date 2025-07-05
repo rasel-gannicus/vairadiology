@@ -36,6 +36,11 @@ export function TaskCard({ task, isDragging }: TaskCardProps) {
     isDragging: isDraggingFromKit,
   } = useDraggable({
     id: task.id,
+    data: {
+      type: 'task',
+      task
+    },
+    disabled: isEditDialogOpen
   })
 
   const style = transform
@@ -67,13 +72,12 @@ export function TaskCard({ task, isDragging }: TaskCardProps) {
       ref={setNodeRef}
       style={style}
       className={cn(
-        "cursor-grab active:cursor-grabbing transition-transform hover:shadow-md",
+        "transition-transform hover:shadow-md",
         isDraggingFromKit && "opacity-50",
       )}
-      {...listeners}
-      {...attributes}
     >
-      <CardHeader className="pb-2">
+      <div {...listeners} {...attributes} className="cursor-grab active:cursor-grabbing"></div>
+        <CardHeader className="pb-2">
         <div className="flex items-start justify-between">
           <h4 className="font-medium text-sm line-clamp-2">{task.title}</h4>
           <DropdownMenu>
@@ -82,16 +86,18 @@ export function TaskCard({ task, isDragging }: TaskCardProps) {
                 <MoreHorizontal className="h-3 w-3" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => {
-                console.log('Edit clicked', task.id);
-                setIsEditDialogOpen(true);
-              }}>
+            <DropdownMenuContent align="end" onCloseAutoFocus={(e) => e.preventDefault()}>
+              <DropdownMenuItem 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsEditDialogOpen(true);
+                }}
+              >
                 Edit
               </DropdownMenuItem>
               <DropdownMenuItem 
-                onClick={() => {
-                  console.log('Delete clicked', task.id);
+                onClick={(e) => {
+                  e.stopPropagation();
                   deleteTask(task.id);
                 }} 
                 className="text-destructive"
