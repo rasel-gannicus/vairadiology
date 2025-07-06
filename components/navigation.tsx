@@ -62,7 +62,7 @@ export function Navigation() {
                   key={item.href}
                   asChild
                   variant={isActive ? "default" : "ghost"}
-                  className={cn("flex items-center space-x-2", isActive && "bg-primary text-primary-foreground")}
+                  className={cn("flex items-center space-x-2", isActive && "bg-[#264753] hover:bg-[#264753] text-primary-foreground")}
                 >
                   <Link href={item.href}>
                     <Icon className="h-4 w-4" />
@@ -99,7 +99,7 @@ export function Navigation() {
                     key={item.href}
                     asChild
                     variant={isActive ? "default" : "ghost"}
-                    className={cn("flex items-center space-x-2 w-full justify-start", isActive && "bg-primary text-primary-foreground")}
+                    className={cn("flex items-center space-x-2 w-full justify-start", isActive && "bg-[#264753] text-primary-foreground")}
                     onClick={() => setMobileOpen(false)}
                   >
                     <Link href={item.href}>

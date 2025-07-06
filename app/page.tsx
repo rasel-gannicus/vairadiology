@@ -29,9 +29,9 @@ const features = [
 
 export default function HomePage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-20">
       <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold tracking-tight">
+        <h1 className="text-4xl font-bold tracking-tight mt-7">
           Welcome to <span className="text-primary">Vairadiology Creative App Drawer</span>
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -53,7 +53,7 @@ export default function HomePage() {
                 <CardDescription>{feature.description}</CardDescription>
               </CardHeader>
               <CardContent>
-                <Button asChild className="w-full group-hover:translate-x-1 transition-transform">
+                <Button asChild className="w-full bg-[#264753] group-hover:translate-x-1 transition-transform">
                   <Link href={feature.href}>
                     Get Started
                     <ArrowRight className="ml-2 h-4 w-4" />
