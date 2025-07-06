@@ -1,11 +1,14 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Ubuntu } from "next/font/google"
 import "./globals.css"
 import { Navigation } from "@/components/navigation"
 import { Toaster } from "@/components/ui/toaster"
 
-const inter = Inter({ subsets: ["latin"] })
+const ubuntu = Ubuntu({ 
+  weight: ['300', '400', '500', '700'],
+  subsets: ["latin"]
+})
 
 export const metadata: Metadata = {
   title: "Vairadiology",
@@ -19,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={ubuntu.className}>
         <div className="min-h-screen bg-background">
           <Navigation />
           <main className="container mx-auto px-4 py-8">{children}</main>

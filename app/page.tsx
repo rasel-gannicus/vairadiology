@@ -6,21 +6,21 @@ import { CheckSquare, BarChart3, ImageIcon, ArrowRight } from "lucide-react"
 const features = [
   {
     title: "Task Management",
-    description: "Kanban board with date-based task organization, drag & drop, and priority management",
+    description: "Nobody does the task - Create, manage, and track your tasks efficiently with our intuitive task management system.",
     icon: CheckSquare,
     href: "/tasks",
     color: "bg-blue-500",
   },
   {
     title: "Dashboard Analytics",
-    description: "Visualize your productivity with interactive charts and task statistics",
+    description: "Because graphs make it look COOL! - Visualize your data with beautiful charts and comprehensive analytics",
     icon: BarChart3,
     href: "/dashboard",
     color: "bg-green-500",
   },
   {
     title: "Image Annotation",
-    description: "Draw and annotate images with polygon tools for precise marking",
+    description: "A great annotation ahead! - Collaborate and provide feedback with our powerful annotation tools",
     icon: ImageIcon,
     href: "/annotate",
     color: "bg-purple-500",
@@ -64,6 +64,22 @@ export default function HomePage() {
           )
         })}
       </div>
+
+      {/* CTA Section */}
+      <Card className="bg-gradient-to-r from-[#4f8cfb] to-[#38f9d7] text-white rounded-3xl shadow-lg border-0">
+        <CardContent className="text-center p-12">
+          <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+          <p className="text-xl opacity-90 mb-8">
+            Explore our features and see what modern frontend engineering can achieve.
+          </p>
+          <Link href="/tasks">
+            <Button variant="secondary" size="lg" className="bg-white text-[#2a4b7c] hover:bg-gray-100 font-semibold rounded-xl px-8">
+              Start with Tasks
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+          </Link>
+        </CardContent>
+      </Card>
 
       <div className="text-center">
         <p className="text-muted-foreground">Built with TypeScript, Next.js, and modern web technologies</p>
