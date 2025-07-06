@@ -5,6 +5,7 @@ import type React from "react"
 import { useRef, useEffect, useState, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Trash2 } from "lucide-react"
+import { Loader2 } from "lucide-react" 
 
 interface Point {
   x: number
@@ -30,6 +31,51 @@ export function ImageAnnotator({ imageSrc, annotations, onAnnotationsChange }: I
   const [selectedPolygon, setSelectedPolygon] = useState<string | null>(null)
   const [imageLoaded, setImageLoaded] = useState(false)
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 })
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Reset states when image source changes
+    setIsLoading(true)
+    setImageLoaded(false)
+    setCurrentPolygon(null)
+    setSelectedPolygon(null)
+  }, [imageSrc])
+
+  useEffect(() => {
+    const image = imageRef.current
+    if (!image) return
+
+    const handleImageLoad = () => {
+      const canvas = canvasRef.current
+      if (!canvas) return
+
+      // Calculate canvas size maintaining aspect ratio
+      const maxWidth = 800
+      const maxHeight = 600
+      const aspectRatio = image.naturalWidth / image.naturalHeight
+
+      let width = maxWidth
+      let height = maxWidth / aspectRatio
+
+      if (height > maxHeight) {
+        height = maxHeight
+        width = maxHeight * aspectRatio
+      }
+
+      canvas.width = width
+      canvas.height = height
+      setCanvasSize({ width, height })
+      setImageLoaded(true)
+      setIsLoading(false) // Add this line
+    }
+
+    if (image.complete) {
+      handleImageLoad()
+    } else {
+      image.addEventListener("load", handleImageLoad)
+      return () => image.removeEventListener("load", handleImageLoad)
+    }
+  }, [imageSrc])
 
   const drawCanvas = useCallback(() => {
     const canvas = canvasRef.current
@@ -101,41 +147,6 @@ export function ImageAnnotator({ imageSrc, annotations, onAnnotationsChange }: I
   useEffect(() => {
     drawCanvas()
   }, [drawCanvas])
-
-  useEffect(() => {
-    const image = imageRef.current
-    if (!image) return
-
-    const handleImageLoad = () => {
-      const canvas = canvasRef.current
-      if (!canvas) return
-
-      // Calculate canvas size maintaining aspect ratio
-      const maxWidth = 800
-      const maxHeight = 600
-      const aspectRatio = image.naturalWidth / image.naturalHeight
-
-      let width = maxWidth
-      let height = maxWidth / aspectRatio
-
-      if (height > maxHeight) {
-        height = maxHeight
-        width = maxHeight * aspectRatio
-      }
-
-      canvas.width = width
-      canvas.height = height
-      setCanvasSize({ width, height })
-      setImageLoaded(true)
-    }
-
-    if (image.complete) {
-      handleImageLoad()
-    } else {
-      image.addEventListener("load", handleImageLoad)
-      return () => image.removeEventListener("load", handleImageLoad)
-    }
-  }, [imageSrc])
 
   const getCanvasCoordinates = (event: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current
@@ -253,20 +264,26 @@ export function ImageAnnotator({ imageSrc, annotations, onAnnotationsChange }: I
         )}
       </div>
 
-      <div className="relative inline-block">
+      <div className="relative inline-block w-full">
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-background/80 rounded-lg">
+            <Loader2 className="h-8 w-8 animate-spin" />
+          </div>
+        )}
         <img
           ref={imageRef}
-          src={imageSrc || "/placeholder.svg"}
+          src={imageSrc}
           alt="Annotation target"
           className="hidden"
           crossOrigin="anonymous"
+          onError={() => setIsLoading(false)}
         />
         <canvas
           ref={canvasRef}
           onClick={handleCanvasClick}
           onDoubleClick={handleCanvasDoubleClick}
-          className="border border-border rounded-lg cursor-crosshair max-w-full"
-          style={{ maxWidth: "100%", height: "auto" }}
+          className="border border-border rounded-lg cursor-crosshair w-full"
+          style={{ display: isLoading ? 'none' : 'block' }}
         />
       </div>
 
