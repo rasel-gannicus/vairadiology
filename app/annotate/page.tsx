@@ -18,6 +18,8 @@ const sampleImages = [
   "/images/img-6.jpg",
   "/images/img-7.jpg",
   "/images/img-8.jpg",
+  "/images/img-9.jpg",
+  "/images/img-10.jpg",
 ]
 
 export default function AnnotatePage() {
@@ -25,7 +27,7 @@ export default function AnnotatePage() {
   const [annotations, setAnnotations] = useState<Record<number, any[]>>({})
   const { toast } = useToast()
 
-  // Load annotations from localStorage on mount
+  // Loading annotations from localStorage on mount
   useEffect(() => {
     const saved = localStorage.getItem("image-annotations")
     if (saved) {
