@@ -49,13 +49,13 @@ export function ImageAnnotator({ imageSrc, annotations, onAnnotationsChange }: I
       const canvas = canvasRef.current
       if (!canvas) return
 
-      // Calculate canvas size maintaining aspect ratio
-      const maxWidth = 800
-      const maxHeight = 600
+      // Reduced maximum dimensions
+      const maxWidth = 800  
+      const maxHeight = 600 
       const aspectRatio = image.naturalWidth / image.naturalHeight
 
       let width = maxWidth
-      let height = maxWidth / aspectRatio
+      let height = width / aspectRatio
 
       if (height > maxHeight) {
         height = maxHeight
@@ -66,7 +66,7 @@ export function ImageAnnotator({ imageSrc, annotations, onAnnotationsChange }: I
       canvas.height = height
       setCanvasSize({ width, height })
       setImageLoaded(true)
-      setIsLoading(false) // Add this line
+      setIsLoading(false)
     }
 
     if (image.complete) {
@@ -264,7 +264,7 @@ export function ImageAnnotator({ imageSrc, annotations, onAnnotationsChange }: I
         )}
       </div>
 
-      <div className="relative inline-block w-full">
+      <div className="relative inline-block ">
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center bg-background/80 rounded-lg">
             <Loader2 className="h-8 w-8 animate-spin" />
