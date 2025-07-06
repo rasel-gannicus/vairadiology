@@ -9,16 +9,14 @@ import { useToast } from "@/hooks/use-toast"
 
 // Sample images - in a real app, these would come from an API or file upload
 const sampleImages = [
-  "/placeholder.svg?height=400&width=600&text=Sample+Image+1",
-  "/placeholder.svg?height=400&width=600&text=Sample+Image+2",
-  "/placeholder.svg?height=400&width=600&text=Sample+Image+3",
-  "/placeholder.svg?height=400&width=600&text=Sample+Image+4",
-  "/placeholder.svg?height=400&width=600&text=Sample+Image+5",
-  "/placeholder.svg?height=400&width=600&text=Sample+Image+6",
-  "/placeholder.svg?height=400&width=600&text=Sample+Image+7",
-  "/placeholder.svg?height=400&width=600&text=Sample+Image+8",
-  "/placeholder.svg?height=400&width=600&text=Sample+Image+9",
-  "/placeholder.svg?height=400&width=600&text=Sample+Image+10",
+  "/images/img-1.jpg",
+  "/images/img-2.jpg",
+  "/images/img-3.jpg",
+  "/images/img-4.jpg",
+  "/images/img-5.jpg",
+  "/images/img-6.jpg",
+  "/images/img-7.jpg",
+  "/images/img-8.jpg",
 ]
 
 export default function AnnotatePage() {
