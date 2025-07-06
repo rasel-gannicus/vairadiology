@@ -8,6 +8,7 @@ import { TasksByPriorityChart } from "@/components/dashboard/tasks-by-priority-c
 import { TasksByTagChart } from "@/components/dashboard/tasks-by-tag-chart"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckSquare, Clock, Target, TrendingUp } from "lucide-react"
+import { motion } from "framer-motion" 
 
 export default function DashboardPage() {
   const { tasks } = useTaskStore()
@@ -55,24 +56,38 @@ export default function DashboardPage() {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {stats.map((stat) => {
+        {stats.map((stat, idx) => {
           const Icon = stat.icon
           return (
-            <Card key={stat.title}>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
-                <Icon className={`h-4 w-4 ${stat.color}`} />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">{stat.value}</div>
-              </CardContent>
-            </Card>
+            <motion.div
+              key={stat.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: idx * 0.12, type: "spring" }}
+            >
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
+                  <Icon className={`h-4 w-4 ${stat.color}`} />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">{stat.value}</div>
+                </CardContent>
+              </Card>
+            </motion.div>
           )
         })}
       </div>
 
       {/* Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, type: "spring" }}
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+      >
         <ChartCard title="Tasks by Status" description="Distribution of tasks across different statuses">
           <TasksByStatusChart />
         </ChartCard>
@@ -92,7 +107,7 @@ export default function DashboardPage() {
         <ChartCard title="Tasks by Tags" description="Most frequently used tags" className="lg:col-span-2">
           <TasksByTagChart />
         </ChartCard>
-      </div>
+      </motion.div>
     </div>
   )
 }

@@ -7,6 +7,7 @@ import { Board } from "@/components/tasks/board"
 import { TaskDialog } from "@/components/tasks/task-dialog"
 import { Button } from "@/components/ui/button"
 import { Plus } from "lucide-react"
+import { motion } from "framer-motion"
 
 export default function TasksPage() {
   const { selectedDate, setSelectedDate } = useTaskStore()
@@ -33,7 +34,13 @@ export default function TasksPage() {
         </div>
       </div>
 
-      <Board />
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, type: "spring" }}
+      >
+        <Board />
+      </motion.div>
 
       <TaskDialog open={isDialogOpen} onOpenChange={setIsDialogOpen} />
     </div>

@@ -1,7 +1,9 @@
+"use client"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckSquare, BarChart3, ImageIcon, ArrowRight } from "lucide-react"
+import { motion } from "framer-motion" 
 
 const features = [
   {
@@ -31,7 +33,7 @@ export default function HomePage() {
   return (
     <div className="space-y-20">
       <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold tracking-tight mt-7">
+        <h1 className="text-4xl font-medium tracking-tight mt-7">
           Welcome to <span className="text-primary">Vairadiology Creative App Drawer</span>
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -41,45 +43,60 @@ export default function HomePage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {features.map((feature) => {
+        {features.map((feature, idx) => {
           const Icon = feature.icon
           return (
-            <Card key={feature.title} className="relative overflow-hidden group hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className={`w-12 h-12 rounded-lg ${feature.color} flex items-center justify-center mb-4`}>
-                  <Icon className="h-6 w-6 text-white" />
-                </div>
-                <CardTitle>{feature.title}</CardTitle>
-                <CardDescription>{feature.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button asChild className="w-full bg-[#264753] group-hover:translate-x-1 transition-transform">
-                  <Link href={feature.href}>
-                    Get Started
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: idx * 0.15, type: "spring" }}
+            >
+              <Card className="relative overflow-hidden group hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className={`w-12 h-12 rounded-lg ${feature.color} flex items-center justify-center mb-4`}>
+                    <Icon className="h-6 w-6 text-white" />
+                  </div>
+                  <CardTitle className="font-semibold">{feature.title}</CardTitle>
+                  <CardDescription>{feature.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Button asChild className="w-full bg-[#264753] group-hover:translate-x-1 transition-transform">
+                    <Link href={feature.href}>
+                      Get Started
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
           )
         })}
       </div>
 
       {/* CTA Section */}
-      <Card className="bg-gradient-to-r from-[#4f8cfb] to-[#38f9d7] text-white rounded-3xl shadow-lg border-0">
-        <CardContent className="text-center p-12">
-          <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
-          <p className="text-xl opacity-90 mb-8">
-            Explore our features and see what modern frontend engineering can achieve.
-          </p>
-          <Link href="/tasks">
-            <Button variant="secondary" size="lg" className="bg-white text-[#2a4b7c] hover:bg-gray-100 font-semibold rounded-xl px-8">
-              Start with Tasks
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-          </Link>
-        </CardContent>
-      </Card>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7, delay: 0.2, type: "spring" }}
+      >
+        <Card className="bg-gradient-to-r from-[#4f8cfb] to-[#38f9d7] text-white rounded-3xl shadow-lg border-0">
+          <CardContent className="text-center p-12">
+            <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+            <p className="text-xl opacity-90 mb-8">
+              Explore our features and see what modern frontend engineering can achieve.
+            </p>
+            <Link href="/tasks">
+              <Button variant="secondary" size="lg" className="bg-white text-[#2a4b7c] hover:bg-gray-100 font-semibold rounded-xl px-8">
+                Start with Tasks
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+      </motion.div>
 
       <div className="text-center">
         <p className="text-muted-foreground">Built with TypeScript, Next.js, and modern web technologies</p>

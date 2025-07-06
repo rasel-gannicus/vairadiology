@@ -6,8 +6,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChevronLeft, ChevronRight, RotateCcw, Save } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
+import { motion } from "framer-motion" 
 
-// Sample images - in a real app, these would come from an API or file upload
+
 const sampleImages = [
   "/images/img-1.jpg",
   "/images/img-2.jpg",
@@ -94,50 +95,62 @@ export default function AnnotatePage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Image Navigation */}
-        <Card className="lg:col-span-1">
-          <CardHeader>
-            <CardTitle className="text-lg">Images</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-2">
-            <div className="flex items-center justify-between mb-4">
-              <Button onClick={prevImage} variant="outline" size="sm">
-                <ChevronLeft className="h-4 w-4" />
-              </Button>
-              <span className="text-sm font-medium">
-                {currentImageIndex + 1} / {sampleImages.length}
-              </span>
-              <Button onClick={nextImage} variant="outline" size="sm">
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-            </div>
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, type: "spring" }}
+          className="lg:col-span-1"
+        >
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Images</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              <div className="flex items-center justify-between mb-4">
+                <Button onClick={prevImage} variant="outline" size="sm">
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+                <span className="text-sm font-medium">
+                  {currentImageIndex + 1} / {sampleImages.length}
+                </span>
+                <Button onClick={nextImage} variant="outline" size="sm">
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              </div>
 
-            <div className="grid grid-cols-2 gap-2 max-h-96 overflow-y-auto">
-              {sampleImages.map((src, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentImageIndex(index)}
-                  className={`relative aspect-video rounded-lg overflow-hidden border-2 transition-colors ${
-                    index === currentImageIndex ? "border-primary" : "border-border hover:border-primary/50"
-                  }`}
-                >
-                  <img
-                    src={src || "/placeholder.svg"}
-                    alt={`Image ${index + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                  {annotations[index]?.length > 0 && (
-                    <div className="absolute top-1 right-1 bg-primary text-primary-foreground text-xs px-1 rounded">
-                      {annotations[index].length}
-                    </div>
-                  )}
-                </button>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+              <div className="grid grid-cols-2 gap-2 max-h-96 overflow-y-auto">
+                {sampleImages.map((src, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`relative aspect-video rounded-lg overflow-hidden border-2 transition-colors ${
+                      index === currentImageIndex ? "border-primary" : "border-border hover:border-primary/50"
+                    }`}
+                  >
+                    <img
+                      src={src || "/placeholder.svg"}
+                      alt={`Image ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                    {annotations[index]?.length > 0 && (
+                      <div className="absolute top-1 right-1 bg-primary text-primary-foreground text-xs px-1 rounded">
+                        {annotations[index].length}
+                      </div>
+                    )}
+                  </button>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
 
         {/* Main Annotation Area */}
-        <div className="lg:col-span-3">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, type: "spring" }}
+          className="lg:col-span-3"
+        >
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center justify-between">
@@ -155,7 +168,7 @@ export default function AnnotatePage() {
               />
             </CardContent>
           </Card>
-        </div>
+        </motion.div>
       </div>
 
       {/* Instructions */}
