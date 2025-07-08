@@ -1,7 +1,7 @@
 "use client"
 
 import { useTaskStore } from "@/lib/stores/task-store"
-import { Bar, BarChart, XAxis, YAxis } from "recharts"
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
 export function TasksByTagChart() {
@@ -40,13 +40,16 @@ export function TasksByTagChart() {
   }
 
   return (
-    <ChartContainer config={chartConfig} className="h-[300px]">
-      <BarChart data={data} layout="horizontal">
-        <XAxis type="number" />
-        <YAxis dataKey="tag" type="category" width={80} />
-        <ChartTooltip content={<ChartTooltipContent />} />
-        <Bar dataKey="count" radius={4} />
-      </BarChart>
-    </ChartContainer>
+    <ResponsiveContainer width="100%" height={300}>
+        <ChartContainer config={chartConfig} className="h-[300px]">
+          <BarChart data={data} layout="horizontal">
+            <XAxis type="number" />
+            <YAxis dataKey="tag" type="category" width={80} />
+            <ChartTooltip content={<ChartTooltipContent />} />
+            <Bar dataKey="count" radius={4} />
+          </BarChart>
+      </ChartContainer>
+    </ResponsiveContainer>
+
   )
 }

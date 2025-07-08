@@ -1,7 +1,7 @@
 "use client"
 
 import { useTaskStore } from "@/lib/stores/task-store"
-import { Pie, PieChart } from "recharts"
+import { Pie, PieChart, ResponsiveContainer } from "recharts"
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
 export function TasksByPriorityChart() {
@@ -44,18 +44,21 @@ export function TasksByPriorityChart() {
   }
 
   return (
-    <ChartContainer config={chartConfig} className="h-[300px]">
-      <PieChart>
-        <Pie
-          data={data}
-          cx="50%"
-          cy="50%"
-          outerRadius={80}
-          dataKey="count"
-          label={({ priority, count }) => `${priority}: ${count}`}
-        />
-        <ChartTooltip content={<ChartTooltipContent />} />
-      </PieChart>
-    </ChartContainer>
+    <ResponsiveContainer width="100%" height={300}>
+        <ChartContainer config={chartConfig}>
+          <PieChart>
+            <Pie
+              data={data}
+              cx="50%"
+              cy="50%"
+              outerRadius={80}
+              dataKey="count"
+              label={({ priority, count }) => `${priority}: ${count}`}
+            />
+            <ChartTooltip content={<ChartTooltipContent />} />
+          </PieChart>
+        </ChartContainer>
+    </ResponsiveContainer>
+
   )
 }

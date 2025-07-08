@@ -1,7 +1,7 @@
 "use client"
 
 import { useTaskStore } from "@/lib/stores/task-store"
-import { Bar, BarChart, XAxis, YAxis } from "recharts"
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
 export function TasksByStatusChart() {
@@ -44,7 +44,9 @@ export function TasksByStatusChart() {
   }
 
   return (
-    <ChartContainer config={chartConfig} className="h-[300px]">
+
+  <ResponsiveContainer width="100%" height={300}>
+    <ChartContainer config={chartConfig} >
       <BarChart data={data}>
         <XAxis dataKey="status" />
         <YAxis />
@@ -52,5 +54,6 @@ export function TasksByStatusChart() {
         <Bar dataKey="count" radius={4} />
       </BarChart>
     </ChartContainer>
+  </ResponsiveContainer>
   )
 }

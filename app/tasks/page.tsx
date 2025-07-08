@@ -14,7 +14,6 @@ export default function TasksPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
 
   const handleDateChange = (date: Date) => {
-    // Local timezone এ date format করি
     const year = date.getFullYear()
     const month = String(date.getMonth() + 1).padStart(2, '0')
     const day = String(date.getDate()).padStart(2, '0')
@@ -23,10 +22,10 @@ export default function TasksPage() {
     setSelectedDate(formattedDate)
   }
 
-  // selectedDate থেকে proper Date object তৈরি করি
+
   const getCurrentDate = () => {
     const [year, month, day] = selectedDate.split('-').map(Number)
-    return new Date(year, month - 1, day) // month 0-indexed তাই -1
+    return new Date(year, month - 1, day) 
   }
 
   return (

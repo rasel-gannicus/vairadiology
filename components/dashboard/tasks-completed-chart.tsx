@@ -1,7 +1,7 @@
 "use client"
 
 import { useTaskStore } from "@/lib/stores/task-store"
-import { Line, LineChart, XAxis, YAxis } from "recharts"
+import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 import { format, subDays, eachDayOfInterval } from "date-fns"
 
@@ -31,19 +31,22 @@ export function TasksCompletedChart() {
   }
 
   return (
-    <ChartContainer config={chartConfig} className="h-[300px]">
-      <LineChart data={data}>
-        <XAxis dataKey="date" />
-        <YAxis />
-        <ChartTooltip content={<ChartTooltipContent />} />
-        <Line
-          type="monotone"
-          dataKey="completed"
-          stroke="hsl(var(--chart-1))"
-          strokeWidth={2}
-          dot={{ fill: "hsl(var(--chart-1))" }}
-        />
-      </LineChart>
-    </ChartContainer>
+    <ResponsiveContainer width="100%" height={300}>
+          <ChartContainer config={chartConfig} className="h-[300px]">
+              <LineChart data={data}>
+                  <XAxis dataKey="date" />
+                  <YAxis />
+                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <Line
+                    type="monotone"
+                    dataKey="completed"
+                    stroke="hsl(var(--chart-1))"
+                    strokeWidth={2}
+                    dot={{ fill: "hsl(var(--chart-1))" }}
+                  />
+              </LineChart>
+        </ChartContainer>
+    </ResponsiveContainer>
+
   )
 }
