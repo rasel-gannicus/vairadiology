@@ -14,7 +14,19 @@ export default function TasksPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
 
   const handleDateChange = (date: Date) => {
-    setSelectedDate(date.toISOString().split("T")[0])
+    // Local timezone এ date format করি
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+    const formattedDate = `${year}-${month}-${day}`
+    
+    setSelectedDate(formattedDate)
+  }
+
+  // selectedDate থেকে proper Date object তৈরি করি
+  const getCurrentDate = () => {
+    const [year, month, day] = selectedDate.split('-').map(Number)
+    return new Date(year, month - 1, day) // month 0-indexed তাই -1
   }
 
   return (
@@ -26,7 +38,7 @@ export default function TasksPage() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-          <DateSelector date={new Date(selectedDate)} onDateChange={handleDateChange} />
+          <DateSelector date={getCurrentDate()} onDateChange={handleDateChange} />
           <Button className="bg-[#264753]" onClick={() => setIsDialogOpen(true)}>
             <Plus className="mr-2 h-4 w-4" />
             Add Task
