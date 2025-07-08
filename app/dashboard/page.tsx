@@ -108,6 +108,48 @@ export default function DashboardPage() {
           <TasksByTagChart />
         </ChartCard>
       </motion.div>
+
+
+      {/* Performance Insights */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+        <Card className="bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-lg">
+          <CardContent className="p-6">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="p-3 bg-white/20 rounded-lg">
+                <TrendingUp className="w-8 h-8" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold">Performance Insights</h3>
+                <p className="opacity-90">Your productivity is trending upward</p>
+              </div>
+            </div>
+            <ul className="space-y-2 text-sm opacity-90">
+              <li>• Best performance on Thursdays</li>
+              <li>• Peak activity between 10-11 AM</li>
+              <li>• {completionRate}% task completion rate</li>
+            </ul>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-lg">
+          <CardContent className="p-6">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="p-3 bg-white/20 rounded-lg">
+                <Clock className="w-8 h-8" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold">Time Management</h3>
+                <p className="opacity-90">Optimization suggestions</p>
+              </div>
+            </div>
+            <ul className="space-y-2 text-sm opacity-90">
+              <li>• Focus on high-priority tasks first</li>
+              <li>• Schedule breaks between 12-1 PM</li>
+              <li>• Consider time-blocking for better focus</li>
+            </ul>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   )
 }
