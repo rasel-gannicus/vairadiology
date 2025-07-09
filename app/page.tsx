@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckSquare, BarChart3, ImageIcon, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion" 
+import AboutHeroSection from "@/components/homepage_components/AboutHeroSection"
 
 const features = [
   {
@@ -22,7 +23,7 @@ const features = [
   },
   {
     title: "Image Annotation",
-    description: "A great annotation ahead! - Collaborate and provide feedback with our powerful annotation tools",
+    description: "A great annotation ahead! - Collaborate and provide feedback with our powerful annotation tools. Make comparison and contrast with ease.",
     icon: ImageIcon,
     href: "/annotate",
     color: "bg-purple-500",
@@ -53,7 +54,7 @@ export default function HomePage() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: idx * 0.15, type: "spring" }}
             >
-              <Card className="relative overflow-hidden group hover:shadow-lg transition-shadow">
+              <Card className="relative overflow-hidden group hover:shadow-lg h-full transition-shadow">
                 <CardHeader>
                   <div className={`w-12 h-12 rounded-lg ${feature.color} flex items-center justify-center mb-4`}>
                     <Icon className="h-6 w-6 text-white" />
@@ -97,6 +98,8 @@ export default function HomePage() {
           </CardContent>
         </Card>
       </motion.div>
+      
+      <AboutHeroSection />
 
       <div className="text-center">
         <p className="text-muted-foreground">Built with TypeScript, Next.js, and modern web technologies</p>
