@@ -3,7 +3,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckSquare, BarChart3, ImageIcon, ArrowRight } from "lucide-react"
-import { motion } from "framer-motion" 
+import { motion } from "framer-motion"
 import AboutHeroSection from "@/components/homepage_components/AboutHeroSection"
 
 const features = [
@@ -43,7 +43,7 @@ export default function HomePage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {features.map((feature, idx) => {
           const Icon = feature.icon
           return (
@@ -54,7 +54,7 @@ export default function HomePage() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: idx * 0.15, type: "spring" }}
             >
-              <Card className="relative overflow-hidden group hover:shadow-lg h-full transition-shadow">
+              <Card className="relative flex flex-col justify-between overflow-hidden group hover:shadow-lg h-full transition-shadow">
                 <CardHeader>
                   <div className={`w-12 h-12 rounded-lg ${feature.color} flex items-center justify-center mb-4`}>
                     <Icon className="h-6 w-6 text-white" />
@@ -98,7 +98,7 @@ export default function HomePage() {
           </CardContent>
         </Card>
       </motion.div>
-      
+
       <AboutHeroSection />
 
       <div className="text-center">

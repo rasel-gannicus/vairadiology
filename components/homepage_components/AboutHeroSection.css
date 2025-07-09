@@ -1,0 +1,26 @@
+
+@keyframes topBottom {
+    0%, 100% {
+      top: 40%;
+    }
+    50% {
+      top: 60%;
+    }
+  }
+  
+  .about-hero-anim {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 300px;
+    height: 200px;
+    background: #051f42;
+    mix-blend-mode: hard-light;
+    animation: topBottom 5s infinite;
+    border-radius: 6px;
+    margin-left: -150px;
+    margin-top: -100px;
+    opacity: 0.9;
+    content: "";
+  }
+  
