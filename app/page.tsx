@@ -5,6 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { CheckSquare, BarChart3, ImageIcon, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 import AboutHeroSection from "@/components/homepage_components/AboutHeroSection"
+import { AboutSectionTwo, cardsData } from "@/components/homepage_components/AboutSectionTwo"
+import CtaSection from "@/components/homepage_components/CtaSection"
 
 const features = [
   {
@@ -29,6 +31,7 @@ const features = [
     color: "bg-purple-500",
   },
 ]
+
 
 export default function HomePage() {
   return (
@@ -76,30 +79,18 @@ export default function HomePage() {
         })}
       </div>
 
-      {/* CTA Section */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.96 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.7, delay: 0.2, type: "spring" }}
-      >
-        <Card className="bg-gradient-to-r from-[#4f8cfb] to-[#38f9d7] text-white rounded-3xl shadow-lg border-0">
-          <CardContent className="text-center p-12">
-            <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
-            <p className="text-xl opacity-90 mb-8">
-              Explore our features and see what modern frontend engineering can achieve.
-            </p>
-            <Link href="/tasks">
-              <Button variant="secondary" size="lg" className="bg-white text-[#2a4b7c] hover:bg-gray-100 font-semibold rounded-xl px-8">
-                Start with Tasks
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
-      </motion.div>
 
+      {/* About Section */}
       <AboutHeroSection />
+
+      <div className="">
+        {cardsData.map((card, index) => (
+          <AboutSectionTwo key={index} {...card} />
+        ))}
+      </div>
+
+      {/* CTA Section */}
+      <CtaSection />
 
       <div className="text-center">
         <p className="text-muted-foreground">Built with TypeScript, Next.js, and modern web technologies</p>
