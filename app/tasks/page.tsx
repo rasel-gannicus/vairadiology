@@ -38,7 +38,7 @@ export default function TasksPage() {
 
         <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
           <DateSelector date={getCurrentDate()} onDateChange={handleDateChange} />
-          <Button className="bg-[#264753]" onClick={() => setIsDialogOpen(true)}>
+          <Button className="bg-teal-600" onClick={() => setIsDialogOpen(true)}>
             <Plus className="mr-2 h-4 w-4" />
             Add Task
           </Button>

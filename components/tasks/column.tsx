@@ -21,7 +21,7 @@ export function Column({ id, title, color, tasks }: ColumnProps) {
     <div
       ref={setNodeRef}
       className={cn(
-        "rounded-lg p-4 min-h-[500px] transition-colors",
+        "rounded-lg p-4 min-h-[500px] transition-colors shadow-2xl drop-shadow-2xl",
         color,
         isOver && "ring-2 ring-primary ring-offset-2",
       )}

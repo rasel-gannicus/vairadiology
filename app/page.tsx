@@ -66,7 +66,7 @@ export default function HomePage() {
                   <CardDescription>{feature.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Button asChild className="w-full bg-[#264753] group-hover:translate-x-1 transition-transform">
+                  <Button asChild className="w-full bg-gradient-to-br from-gray-900 to-blue-900  group-hover:translate-x-1 transition-transform">
                     <Link href={feature.href}>
                       Get Started
                       <ArrowRight className="ml-2 h-4 w-4" />

@@ -88,7 +88,7 @@ export default function AnnotatePage() {
             <RotateCcw className="mr-2 h-4 w-4" />
             Clear
           </Button>
-          <Button onClick={saveAnnotations}>
+          <Button onClick={saveAnnotations} className="bg-gradient-to-br from-gray-900 to-blue-900 ">
             <Save className="mr-2 h-4 w-4" />
             Save
           </Button>
