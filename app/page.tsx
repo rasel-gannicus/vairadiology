@@ -39,7 +39,9 @@ const features = [
 export default function HomePage() {
   return (
     <div className="space-y-20">
-      <HeroSection />
+      <div className="min-h-[50vh]">
+        <HeroSection />
+      </div>
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-medium tracking-tight mt-7">
           Welcome to <span className="text-primary">Vairadiology Creative App Drawer</span>
