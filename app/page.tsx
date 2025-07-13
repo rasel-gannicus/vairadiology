@@ -42,7 +42,7 @@ export default function HomePage() {
       <div className="min-h-[50vh]">
         <HeroSection />
       </div>
-      <div className="text-center space-y-4 pt-36 ">
+      <div className="text-center space-y-4 pt-36 lg:pt-16 ">
         <h1 className="text-4xl font-medium tracking-tight mt-7">
           Welcome to <span className="text-primary">Vairadiology Creative App Drawer</span>
         </h1>
@@ -52,6 +52,7 @@ export default function HomePage() {
         </p>
       </div>
 
+      {/* --- app navigation card section --- */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {features.map((feature, idx) => {
           const Icon = feature.icon
@@ -89,7 +90,7 @@ export default function HomePage() {
       {/* About Section */}
       <AboutHeroSection />
 
-      <div className="">
+      <div className=" pt-28 pb-40">
         {cardsData.map((card, index) => (
           <AboutSectionTwo key={index} {...card} />
         ))}
