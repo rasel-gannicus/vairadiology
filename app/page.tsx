@@ -42,7 +42,7 @@ export default function HomePage() {
       <div className="min-h-[50vh]">
         <HeroSection />
       </div>
-      <div className="text-center space-y-4">
+      <div className="text-center space-y-4 pt-36 ">
         <h1 className="text-4xl font-medium tracking-tight mt-7">
           Welcome to <span className="text-primary">Vairadiology Creative App Drawer</span>
         </h1>

@@ -26,7 +26,7 @@ export default function RootLayout({
       <body className={`${ubuntu.className} bg-[#f2f8fd]`}>
         <div className="min-h-screen  ">
           <Navigation />
-          <main className="container mx-auto px-4 pb-8  z-0">{children}</main>
+          <main className="container relative mx-auto px-4 py-20  z-0">{children}</main>
         </div>
         <Toaster />
         <Footer />

@@ -1,6 +1,6 @@
 const HeroSection = () => {
     return (
-      <section className="relative -z-50 h-[650px] overflow-hidden text-white">
+      <section className="absolute top-0 left-0 right-0 -z-50 h-[650px] overflow-hidden text-white">
         {/* Background Video */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
