@@ -7,6 +7,9 @@ import { motion } from "framer-motion"
 import AboutHeroSection from "@/components/homepage_components/AboutHeroSection"
 import { AboutSectionTwo, cardsData } from "@/components/homepage_components/AboutSectionTwo"
 import CtaSection from "@/components/homepage_components/CtaSection"
+import ExampleUsage from "@/components/hero/HeroSection"
+import DiagonalDivider from "@/components/hero/HeroSection"
+import HeroSection from "@/components/hero/HeroSection"
 
 const features = [
   {
@@ -36,6 +39,7 @@ const features = [
 export default function HomePage() {
   return (
     <div className="space-y-20">
+      <HeroSection />
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-medium tracking-tight mt-7">
           Welcome to <span className="text-primary">Vairadiology Creative App Drawer</span>

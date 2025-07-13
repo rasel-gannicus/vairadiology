@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import { Ubuntu } from "next/font/google"
 import "./globals.css"
 import { Toaster } from "@/components/ui/toaster"
-import { Navigation } from "@/components/shared/navbar/navigation"
+import { Navigation } from "@/components/shared/navbar/Navigation"
 import { Footer } from "@/components/shared/footer/Footer"
 
 const ubuntu = Ubuntu({
@@ -23,8 +23,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={ubuntu.className}>
-        <div className="min-h-screen  bg-[#f2f8fd]">
+      <body className={`${ubuntu.className} bg-[#f2f8fd]`}>
+        <div className="min-h-screen  ">
           <Navigation />
           <main className="container mx-auto px-4 py-8 ">{children}</main>
         </div>
