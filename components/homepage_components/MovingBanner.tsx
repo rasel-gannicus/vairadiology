@@ -15,7 +15,7 @@ export default function SpinningBanner() {
     const repeatedItems = [...items, ...items, ...items] 
 
     return (
-        <div className="w-full overflow-hidden bg-gray-900 rounded-full py-4">
+        <div className="w-full overflow-hidden bg-gray-900  rounded-full py-4">
             <motion.div
                 className="flex gap-10 w-max"
                 animate={{ x: ["0%", "-100%"] }}

@@ -49,48 +49,52 @@ A comprehensive 3-in-1 frontend application combining task management, data visu
 ### Installation
 
 1. Clone the repository:
-\`\`\`bash
+```
+bash
 git clone <your-repo-url>
 cd 404-project-not-found
-\`\`\`
+```
 
 2. Install dependencies:
-\`\`\`bash
+```
 npm install
 # or
 yarn install
 # or
 pnpm install
-\`\`\`
+```
 
 3. Run the development server:
-\`\`\`bash
+```
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
-\`\`\`
+```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Project Structure
 
-\`\`\`
+```
 ├── app/                    # Next.js App Router pages
 │   ├── tasks/             # Task management page
 │   ├── dashboard/         # Analytics dashboard
 │   ├── annotate/          # Image annotation tool
-│   └── layout.tsx         # Root layout
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # app container
 ├── components/            # Reusable components
 │   ├── ui/               # shadcn/ui components
 │   ├── tasks/            # Task-related components
 │   ├── dashboard/        # Chart components
+│   ├── homepage_components/   # all the components for homepage
 │   └── annotate/         # Annotation components
 ├── lib/                  # Utilities and stores
 │   └── stores/           # Zustand state management
+├── hooks/                # hooks
 └── public/               # Static assets
-\`\`\`
+```
 
 ## Key Components
 
@@ -195,4 +199,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **"Believe in the code that believes in you!"** 🚀
 
-Built with ❤️ and lots of TypeScript
+Built with ❤️ and lots of TypeScript by Shafiqul Hasan Rasel
