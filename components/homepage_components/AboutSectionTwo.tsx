@@ -70,8 +70,8 @@ export const AboutSectionTwo: React.FC<AboutSectionTwoProps> = ({
       transition={{ duration: 0.8, ease: 'easeOut' }}
     >
       {/* Decorative blurred circles */}
-      <div className="hidden lg:block absolute -top-16 -left-16 w-72 h-72 bg-pink-400/30 rounded-full blur-sm pointer-events-none select-none z-0"></div>
-      <div className="hidden lg:block absolute -bottom-20 right-0  xl:-right-20 w-72 h-72 bg-blue-400/30 rounded-full blur-sm pointer-events-none select-none z-0"></div>
+      {/* <div className="hidden lg:block absolute -top-16 -left-16 w-72 h-72 bg-pink-400/30 rounded-full blur-sm pointer-events-none select-none z-0"></div>
+      <div className="hidden lg:block absolute -bottom-20 right-0  xl:-right-20 w-72 h-72 bg-blue-400/30 rounded-full blur-sm pointer-events-none select-none z-0"></div> */}
 
       {/* Main content */}
       <div className="flex-1 min-w-0 md:pr-10 bg-white backdrop-blur-md rounded-2xl border border-white/20 p-6 shadow-lg z-10">
