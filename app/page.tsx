@@ -9,11 +9,11 @@ import CtaSection from "@/components/homepage_components/CtaSection"
 
 export default function HomePage() {
   return (
-    <div className="space-y-20">
+    <div className="space-y-20 ">
       <div className="min-h-[50vh]">
         <HeroSection />
       </div>
-      <div className="text-center space-y-4 pt-36 lg:pt-16 ">
+      <div className="text-center space-y-4 pt-36 lg:pt-16  ">
         <h1 className="text-4xl font-medium tracking-tight mt-7">
           Welcome to <span className="text-primary">Vairadiology Creative App Drawer</span>
         </h1>
@@ -30,7 +30,7 @@ export default function HomePage() {
       <AboutHeroSection />
 
       {/* About Section Two */}
-      <div className=" pt-28 pb-40">
+      <div className=" pt-28 pb-40 ">
         {cardsData.map((card, index) => (
           <AboutSectionTwo key={index} {...card} />
         ))}

@@ -43,7 +43,7 @@ const features = [
 
 export function AppGrid() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 bg-[#f2f8fd] md:grid-cols-2 lg:grid-cols-3 gap-6">
       {features.map((feature, idx) => {
         const Icon = feature.icon
         return (

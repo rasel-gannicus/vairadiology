@@ -7,10 +7,16 @@ import { useState } from "react"
 import { TaskCard } from "./task-card"
 
 const columns: { id: TaskStatus; title: string; color: string }[] = [
-  { id: "todo", title: "To Do", color: "bg-slate-100 dark:bg-slate-800" },
-  { id: "in-progress", title: "In Progress", color: "bg-blue-50 dark:bg-blue-900/20" },
-  { id: "done", title: "Done", color: "bg-green-50 dark:bg-green-900/20" },
+  // হালকা স্লেট (গ্রে) – To Do
+  { id: "todo", title: "To Do", color: "bg-red-500/50 dark:bg-slate-800/40" },
+
+  // নরম ব্লু – In Progress
+  { id: "in-progress", title: "In Progress", color: "bg-sky-50/50 dark:bg-sky-900/30" },
+
+  // সফট গ্রীন – Done
+  { id: "done", title: "Done", color: "bg-emerald-50/50 dark:bg-emerald-900/30" },
 ]
+
 
 export function Board() {
   const { selectedDate, getTasksByStatus, moveTask, tasks } = useTaskStore()

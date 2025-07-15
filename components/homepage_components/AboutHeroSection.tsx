@@ -22,7 +22,7 @@ export default function AboutHeroSection() {
   ];
 
   return (
-    <section className="bg-[#f2f8fd] rounded-3xl  flex flex-col lg:flex-row items-center justify-between gap-10 mb-16">
+    <section className="bg-[#f2f8fd] rounded-3xl z-50  flex flex-col lg:flex-row items-center justify-between gap-10 mb-16">
       {/* Left: Text */}
       <div className="flex-1 max-w-xl">
         <span className="inline-block bg-white text-[#264753] font-semibold px-5 py-2 rounded-full mb-6 text-sm tracking-widest shadow">

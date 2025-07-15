@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { CheckSquare, BarChart3, ImageIcon, Menu } from "lucide-react"
 import Image from "next/image"
+import { useState } from "react" // useState যোগ করুন
 
 const navItems = [
   {
@@ -31,6 +32,7 @@ const navItems = [
 
 export function Navigation() {
   const pathname = usePathname()
+  const [isOpen, setIsOpen] = useState(false) // Sheet এর state যোগ করুন
 
   return (
     <nav className="border-b bg-background/95 backdrop-blur z-10 fixed top-0 left-0 right-0 supports-[backdrop-filter]:bg-background/60">
@@ -71,7 +73,7 @@ export function Navigation() {
           </div>
 
           <div className="md:hidden flex items-center z-[500]">
-            <Sheet>
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" aria-label="Toggle navigation menu">
                   <Menu className="h-6 w-6" />
@@ -96,6 +98,7 @@ export function Navigation() {
                             ? "bg-gradient-to-br from-blue-700 to-blue-900 text-white shadow"
                             : "hover:bg-blue-50 dark:hover:bg-gray-800"
                         )}
+                        onClick={() => setIsOpen(false)} // ক্লিক করলে Sheet বন্ধ করুন
                       >
                         <Link href={item.href}>
                           <Icon className="h-5 w-5" />

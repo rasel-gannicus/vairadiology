@@ -14,7 +14,7 @@ export default function CtaSection() {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.7, delay: 0.2, type: "spring" }}
             >
-                <Card className="bg-gradient-to-r from-[#4f8cfb] to-[#38f9d7] text-white rounded-3xl shadow-lg border-0">
+                <Card className="bg-gradient-to-r from-[#4f8cfb] to-[#38f9d7]  rounded-3xl shadow-lg border-0 text-black">
                     <CardContent className="text-center p-12">
                         <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
                         <p className="text-xl opacity-90 mb-8">
