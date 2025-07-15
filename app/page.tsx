@@ -1,9 +1,10 @@
 "use client"
-import HeroSection from "@/components/homepage_components/hero/HeroSection"
 import AboutHeroSection from "@/components/homepage_components/AboutHeroSection"
 import { AboutSectionTwo, cardsData } from "@/components/homepage_components/AboutSectionTwo"
 import { AppGrid } from "@/components/homepage_components/AppGrid"
 import CtaSection from "@/components/homepage_components/CtaSection"
+import HeroSection from "@/components/homepage_components/hero/HeroSection"
+import HexagonExpertise from "@/components/homepage_components/HexagonSection/HexagonGallery"
 import MovingBanner from "@/components/homepage_components/MovingBanner"
 
 
@@ -36,14 +37,13 @@ export default function HomePage() {
           <AboutSectionTwo key={index} {...card} />
         ))}
       </div>
-
-      {/* CTA Section */}
       <CtaSection />
-
       <MovingBanner />
+      <HexagonExpertise />
       <div className="text-center">
         <p className="text-muted-foreground">Built with TypeScript, Next.js, and modern web technologies</p>
       </div>
+
     </div>
   )
 }
